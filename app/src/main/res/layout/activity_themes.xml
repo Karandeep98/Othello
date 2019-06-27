@@ -5,6 +5,50 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Themes">
+        tools:context=".Themes"
+android:id="@+id/themeslayout"
+android:orientation="vertical">
+    <androidx.appcompat.widget.Toolbar android:layout_width="match_parent"
+                                       android:layout_height="?actionBarSize"
+                                       android:id="@+id/toolbar"
+                                       android:background="@color/colorPrimary">
+
+    </androidx.appcompat.widget.Toolbar>
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:gravity="center"
+    android:text="Select Theme"
+    android:layout_margin="20dp"
+    android:textSize="30sp"
+    android:textStyle="italic"/>
+    <Button android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:text="orange"
+    android:id="@+id/orangebutton"
+            android:textStyle="italic"
+            android:background="@color/orange"
+            android:layout_margin="20dp"
+    />
+    <Button android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="magenta"
+            android:id="@+id/magentabutton"
+            android:textStyle="italic"
+            android:background="@color/magenta"
+            android:layout_margin="20dp"
+    />
+    <Button android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="blue"
+            android:id="@+id/bluebutton"
+    android:background="@color/blue"
+    android:textStyle="italic"
+            android:layout_margin="20dp"
+    />
+
+    <Button android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="green"
+            android:id="@+id/greenbutton"
+            android:background="@color/green"
+            android:textStyle="italic"
+            android:layout_margin="20dp"
+    />
+
 
 </LinearLayout>

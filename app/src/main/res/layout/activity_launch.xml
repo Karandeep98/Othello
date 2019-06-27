@@ -6,17 +6,23 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".Launch"
-android:orientation="vertical">
+android:orientation="vertical"
+android:background="@color/black">
     <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
     android:text="Othello"
     android:textSize="50sp"
     android:gravity="center"
-    android:textStyle="bold"/>
+    android:textStyle="italic"
+              android:textColor="@color/white"
+    android:layout_margin="20dp"/>
     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-    android:text="A minute to learn,a lifetime to master!"
-    android:textSize="30sp"
-    android:textStyle="italic"/>
+              android:text="A minute to learn,a lifetime to master!"
+              android:textSize="30sp"
+              android:textStyle="italic"
+              android:textColor="@color/white"
+    />
     <ImageView android:layout_width="match_parent" android:layout_height="wrap_content"
+
     android:src="@drawable/launchimg"/>
     <Button android:layout_width="match_parent" android:layout_height="wrap_content"
     android:text="New Game"
@@ -27,11 +33,13 @@ android:orientation="vertical">
             android:text="Settings"
             android:textStyle="italic"
             android:textSize="30sp"
+            android:id="@+id/settings"
             />
     <Button android:layout_width="match_parent" android:layout_height="wrap_content"
             android:text="About"
             android:textStyle="italic"
-            android:textSize="30sp"/>
+            android:textSize="30sp"
+    android:id="@+id/about"/>
 
 
 </LinearLayout>

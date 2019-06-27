@@ -1,41 +1,35 @@
 package codingblocks.com.othello
 
 import android.content.Intent
-import android.graphics.Color.rgb
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.widget.LinearLayout
-import kotlinx.android.synthetic.main.activity_themes.*
+import kotlinx.android.synthetic.main.activity_settings.*
 
-class Themes : AppCompatActivity() {
+class Settings : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_themes)
+        setContentView(R.layout.activity_settings)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-        orangebutton.setOnClickListener {
-
+        handicap1.setOnClickListener {
             val l= Intent(this,MainActivity::class.java)
-            l.putExtra("themeColor",orangebutton.text.toString())
+            l.putExtra("handicap",1)
             startActivity(l)
         }
-        magentabutton.setOnClickListener {
+        handicap2.setOnClickListener {
             val l= Intent(this,MainActivity::class.java)
-            l.putExtra("themeColor",magentabutton.text.toString())
+            l.putExtra("handicap",2)
             startActivity(l)
         }
-        bluebutton.setOnClickListener {
+        handicap3.setOnClickListener {
             val l= Intent(this,MainActivity::class.java)
-            l.putExtra("themeColor",bluebutton.text.toString())
+            l.putExtra("handicap",3)
             startActivity(l)
         }
-        greenbutton.setOnClickListener {
+        handicap4.setOnClickListener {
             val l= Intent(this,MainActivity::class.java)
-            l.putExtra("themeColor",greenbutton.text.toString())
+            l.putExtra("handicap",4)
             startActivity(l)
         }
     }

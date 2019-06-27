@@ -22,14 +22,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 //        var buttonArray = arrayOfNulls<Array<Button>?>(64)
         var buttonArray = Array(8) {
             Array(8) {
                 Button(this)
             }
         }
-
-
         var count=1
         var countblack=2
         var countwhite=2
@@ -48,17 +48,42 @@ class MainActivity : AppCompatActivity() {
                 buttonArray[3][4].text = "⚫"
                 buttonArray[4][4].text = "⚪"
                 buttonArray[4][3].text = "⚫"
-//                var legit ="⚫"
-//                for (a in 0 until 7){
-//                    for (b in 0 until 7){
-//                        if(buttonArray[a][b].text=="⚫"){
-//                            if(buttonArray[a][b+1].text=="⚪"){
-//
-//                            }
-//                        }
-//                    }
-//                }
+                val theme=intent.getStringExtra("themeColor")
+                when(theme){
+                    "magenta"->buttonArray[i][j].setBackgroundColor(rgb(203, 22, 219))
+                    "orange"->buttonArray[i][j].setBackgroundColor(rgb(207, 124, 35))
+                    "blue"->buttonArray[i][j].setBackgroundColor(rgb(36, 185, 201))
+                    "green"->buttonArray[i][j].setBackgroundColor(rgb(49, 191, 42))
+                }
 
+                val hand=intent.getIntExtra("handicap",0)
+                when(hand){
+                    1-> {
+                        buttonArray[0][0].text = "⚫"
+                        countblack=3
+                        tvblack.text="Black:03"
+                    }
+                    2->{ buttonArray[0][0].text="⚫"
+                        buttonArray[7][7].text="⚫"
+                        countblack=4
+                        tvblack.text="Black:04"
+                    }
+                    3->{buttonArray[0][0].text="⚫"
+                        buttonArray[0][7].text="⚫"
+                        buttonArray[7][7].text="⚫"
+                        countblack=5
+                        tvblack.text="Black:05"
+
+                    }
+                    4->{buttonArray[0][0].text="⚫"
+                        buttonArray[0][7].text="⚫"
+                        buttonArray[7][7].text="⚫"
+                        buttonArray[7][0].text="⚫"
+                        countblack=6
+                        tvblack.text="Black:06"
+
+                    }
+                }
                 buttonArray[i][j].setOnClickListener {
                     if (buttonArray[i][j].text == "") {
                         var row = i
@@ -324,6 +349,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
         buttonreset.setOnClickListener {
+            count=1
             countblack=2
             countwhite=2
             tvwhite.text=tvwhite.text.substring(0,tvwhite.text.length-2)+"0"+countwhite

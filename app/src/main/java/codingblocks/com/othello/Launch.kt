@@ -14,5 +14,13 @@ class Launch : AppCompatActivity() {
             val l=Intent(this,MainActivity::class.java)
             startActivity(l)
         }
+        about.setOnClickListener {
+            val l=Intent(this,About::class.java)
+            startActivity(l)
+        }
+        settings.setOnClickListener {
+            val l=Intent(this,Settings::class.java)
+            startActivity(l)
+        }
     }
 }
