@@ -30,9 +30,9 @@ class MainActivity : AppCompatActivity() {
                 Button(this)
             }
         }
-        var count=1
-        var countblack=2
-        var countwhite=2
+        var count = 1
+        var countblack = 2
+        var countwhite = 2
         for (i in 0..7) {
             for (j in 0..7) {
                 val buttonId = "button_$i$j"
@@ -48,39 +48,42 @@ class MainActivity : AppCompatActivity() {
                 buttonArray[3][4].text = "⚫"
                 buttonArray[4][4].text = "⚪"
                 buttonArray[4][3].text = "⚫"
-                val theme=intent.getStringExtra("themeColor")
-                when(theme){
-                    "magenta"->buttonArray[i][j].setBackgroundColor(rgb(203, 22, 219))
-                    "orange"->buttonArray[i][j].setBackgroundColor(rgb(207, 124, 35))
-                    "blue"->buttonArray[i][j].setBackgroundColor(rgb(36, 185, 201))
-                    "green"->buttonArray[i][j].setBackgroundColor(rgb(49, 191, 42))
+                val theme = intent.getStringExtra("themeColor")
+                when (theme) {
+                    "magenta" -> buttonArray[i][j].setBackgroundColor(rgb(203, 22, 219))
+                    "orange" -> buttonArray[i][j].setBackgroundColor(rgb(207, 124, 35))
+                    "blue" -> buttonArray[i][j].setBackgroundColor(rgb(36, 185, 201))
+                    "green" -> buttonArray[i][j].setBackgroundColor(rgb(49, 191, 42))
                 }
 
-                val hand=intent.getIntExtra("handicap",0)
-                when(hand){
-                    1-> {
+                val hand = intent.getIntExtra("handicap", 0)
+                when (hand) {
+                    1 -> {
                         buttonArray[0][0].text = "⚫"
-                        countblack=3
-                        tvblack.text="Black:03"
+                        countblack = 3
+                        tvblack.text = "Black:03"
                     }
-                    2->{ buttonArray[0][0].text="⚫"
-                        buttonArray[7][7].text="⚫"
-                        countblack=4
-                        tvblack.text="Black:04"
+                    2 -> {
+                        buttonArray[0][0].text = "⚫"
+                        buttonArray[7][7].text = "⚫"
+                        countblack = 4
+                        tvblack.text = "Black:04"
                     }
-                    3->{buttonArray[0][0].text="⚫"
-                        buttonArray[0][7].text="⚫"
-                        buttonArray[7][7].text="⚫"
-                        countblack=5
-                        tvblack.text="Black:05"
+                    3 -> {
+                        buttonArray[0][0].text = "⚫"
+                        buttonArray[0][7].text = "⚫"
+                        buttonArray[7][7].text = "⚫"
+                        countblack = 5
+                        tvblack.text = "Black:05"
 
                     }
-                    4->{buttonArray[0][0].text="⚫"
-                        buttonArray[0][7].text="⚫"
-                        buttonArray[7][7].text="⚫"
-                        buttonArray[7][0].text="⚫"
-                        countblack=6
-                        tvblack.text="Black:06"
+                    4 -> {
+                        buttonArray[0][0].text = "⚫"
+                        buttonArray[0][7].text = "⚫"
+                        buttonArray[7][7].text = "⚫"
+                        buttonArray[7][0].text = "⚫"
+                        countblack = 6
+                        tvblack.text = "Black:06"
 
                     }
                 }
@@ -88,6 +91,7 @@ class MainActivity : AppCompatActivity() {
                     if (buttonArray[i][j].text == "") {
                         var row = i
                         var column = j
+
                         if (count % 2 == 0) {
                             buttonArray[i][j].text = "⚫"
                             countblack++
@@ -103,7 +107,7 @@ class MainActivity : AppCompatActivity() {
                                 }
                             }
                             // loop for vertical up for black
-                            for (l in 7 downTo row +1) {
+                            for (l in 7 downTo row + 1) {
                                 if (buttonArray[l][j].text == "⚫") {
                                     if (buttonArray[l - 1][j].text == "⚪") {
                                         buttonArray[l - 1][j].text = "⚫"
@@ -124,7 +128,7 @@ class MainActivity : AppCompatActivity() {
                                 }
                             }
                             //loop for horizontal left for black
-                            for (l in 7 downTo column +1) {
+                            for (l in 7 downTo column + 1) {
                                 if (buttonArray[i][l].text == "⚫") {
                                     if (buttonArray[i][l - 1].text == "⚪") {
                                         buttonArray[i][l - 1].text = "⚫"
@@ -136,26 +140,26 @@ class MainActivity : AppCompatActivity() {
                             }
                             //loop for left diagonal  downwards in black
 
-                                var l = column + 1
-                                var k = row + 1
-                                while (k < 8 && l < 8 && k > row && l > column && buttonArray[k][l].text != "") {
-                                    if (buttonArray[k][l].text == "⚫") {
-                                        if (buttonArray[k - 1][l - 1].text == "⚪") {
-                                            buttonArray[k - 1][l - 1].text = "⚫"
-                                            countblack++
-                                            countwhite--
-                                        }
-                                        k--
-                                        l--
-                                    } else {
-                                        l++
-                                        k++
+                            var l = column + 1
+                            var k = row + 1
+                            while (k < 8 && l < 8 && k > row && l > column && buttonArray[k][l].text != "") {
+                                if (buttonArray[k][l].text == "⚫") {
+                                    if (buttonArray[k - 1][l - 1].text == "⚪") {
+                                        buttonArray[k - 1][l - 1].text = "⚫"
+                                        countblack++
+                                        countwhite--
                                     }
+                                    k--
+                                    l--
+                                } else {
+                                    l++
+                                    k++
                                 }
+                            }
                             //loop for left diagonal  upwards in black
-                            k=row-1
-                            l=column-1
-                            while (k >=0 && l >=0 && k < row && l < column && buttonArray[k][l].text != "") {
+                            k = row - 1
+                            l = column - 1
+                            while (k >= 0 && l >= 0 && k < row && l < column && buttonArray[k][l].text != "") {
                                 if (buttonArray[k][l].text == "⚫") {
                                     if (buttonArray[k + 1][l + 1].text == "⚪") {
                                         buttonArray[k + 1][l + 1].text = "⚫"
@@ -170,9 +174,9 @@ class MainActivity : AppCompatActivity() {
                                 }
                             }
                             //loop for right diagonal downwards in black
-                             l = column + 1
-                             k = row - 1
-                            while (k >=0 && l < 8 && k < row && l > column && buttonArray[k][l].text != "") {
+                            l = column + 1
+                            k = row - 1
+                            while (k >= 0 && l < 8 && k < row && l > column && buttonArray[k][l].text != "") {
                                 if (buttonArray[k][l].text == "⚫") {
                                     if (buttonArray[k + 1][l - 1].text == "⚪") {
                                         buttonArray[k + 1][l - 1].text = "⚫"
@@ -187,9 +191,9 @@ class MainActivity : AppCompatActivity() {
                                 }
                             }
                             //loop for right diagonal upwards in black
-                            k=row+1
-                            l=column-1
-                            while (k <8 && l >=0 && k > row && l < column && buttonArray[k][l].text != "") {
+                            k = row + 1
+                            l = column - 1
+                            while (k < 8 && l >= 0 && k > row && l < column && buttonArray[k][l].text != "") {
                                 if (buttonArray[k][l].text == "⚫") {
                                     if (buttonArray[k - 1][l + 1].text == "⚪") {
                                         buttonArray[k - 1][l + 1].text = "⚫"
@@ -203,8 +207,7 @@ class MainActivity : AppCompatActivity() {
                                     k++
                                 }
                             }
-                        }
-                        else {
+                        } else {
                             buttonArray[i][j].text = "⚪"
                             countwhite++
                             // loop for vertical down for white
@@ -230,7 +233,7 @@ class MainActivity : AppCompatActivity() {
                                 }
                             }
                             //loop for horizontal right for white
-                            for (k in 0 until  column- 1) {
+                            for (k in 0 until column - 1) {
                                 if (buttonArray[i][k].text == "⚪") {
                                     if (buttonArray[i][k + 1].text == "⚫") {
                                         buttonArray[i][k + 1].text = "⚪"
@@ -252,9 +255,9 @@ class MainActivity : AppCompatActivity() {
                                 }
                             }
                             //loop for left diagonal downwards in white
-                            var l=column+1
-                            var k=row+1
-                            while(k<8&&l<8&&k>row&&l>column&&buttonArray[k][l].text != ""){
+                            var l = column + 1
+                            var k = row + 1
+                            while (k < 8 && l < 8 && k > row && l > column && buttonArray[k][l].text != "") {
                                 if (buttonArray[k][l].text == "⚪") {
                                     if (buttonArray[k - 1][l - 1].text == "⚫") {
                                         buttonArray[k - 1][l - 1].text = "⚪"
@@ -263,16 +266,15 @@ class MainActivity : AppCompatActivity() {
                                     }
                                     k--
                                     l--
-                                }
-                                else {
+                                } else {
                                     l++
                                     k++
                                 }
                             }
                             //loop for left diagonal  upwards in white
-                            k=row-1
-                            l=column-1
-                            while (k >=0 && l >=0 && k < row && l < column && buttonArray[k][l].text != "") {
+                            k = row - 1
+                            l = column - 1
+                            while (k >= 0 && l >= 0 && k < row && l < column && buttonArray[k][l].text != "") {
                                 if (buttonArray[k][l].text == "⚪") {
                                     if (buttonArray[k + 1][l + 1].text == "⚫") {
                                         buttonArray[k + 1][l + 1].text = "⚪"
@@ -289,7 +291,7 @@ class MainActivity : AppCompatActivity() {
                             //loop for right diagonal downwards in white
                             l = column + 1
                             k = row - 1
-                            while (k >=0 && l < 8 && k < row && l > column && buttonArray[k][l].text != "") {
+                            while (k >= 0 && l < 8 && k < row && l > column && buttonArray[k][l].text != "") {
                                 if (buttonArray[k][l].text == "⚪") {
                                     if (buttonArray[k + 1][l - 1].text == "⚫") {
                                         buttonArray[k + 1][l - 1].text = "⚪"
@@ -304,9 +306,9 @@ class MainActivity : AppCompatActivity() {
                                 }
                             }
                             //loop for right diagonal upwards in black
-                            k=row+1
-                            l=column-1
-                            while (k <8 && l >=0 && k > row && l < column && buttonArray[k][l].text != "") {
+                            k = row + 1
+                            l = column - 1
+                            while (k < 8 && l >= 0 && k > row && l < column && buttonArray[k][l].text != "") {
                                 if (buttonArray[k][l].text == "⚪") {
                                     if (buttonArray[k - 1][l + 1].text == "⚫") {
                                         buttonArray[k - 1][l + 1].text = "⚪"
@@ -323,52 +325,53 @@ class MainActivity : AppCompatActivity() {
 
                         }
                         //Displaying count of white
-                            if (countwhite < 10)
-                                tvwhite.text = tvwhite.text.substring(0, tvwhite.text.length - 2) + "0" + countwhite
-                            else
-                                tvwhite.text = tvwhite.text.substring(0, tvwhite.text.length - 2) + countwhite
+                        if (countwhite < 10)
+                            tvwhite.text = tvwhite.text.substring(0, tvwhite.text.length - 2) + "0" + countwhite
+                        else
+                            tvwhite.text = tvwhite.text.substring(0, tvwhite.text.length - 2) + countwhite
                         //Displaying count of black
-                            if (countblack < 10)
-                                tvblack.text = tvblack.text.substring(0, tvblack.text.length - 2) + "0" + countblack
-                            else
-                                tvblack.text = tvblack.text.substring(0, tvblack.text.length - 2) + countblack
+                        if (countblack < 10)
+                            tvblack.text = tvblack.text.substring(0, tvblack.text.length - 2) + "0" + countblack
+                        else
+                            tvblack.text = tvblack.text.substring(0, tvblack.text.length - 2) + countblack
                         count++
 
                         //calculating the winner
-                        if(countblack+countwhite==64||countblack==0||countwhite==0){
-                            if(countblack>countwhite||countwhite==0)
-                                Toast.makeText(this,"Black Won!!",Toast.LENGTH_LONG).show()
-                            else if(countblack<countwhite||countblack==0)
-                                Toast.makeText(this,"White Won!!",Toast.LENGTH_LONG).show()
+                        if (countblack + countwhite == 64 || countblack == 0 || countwhite == 0) {
+                            if (countblack > countwhite || countwhite == 0)
+                                Toast.makeText(this, "Black Won!!", Toast.LENGTH_LONG).show()
+                            else if (countblack < countwhite || countblack == 0)
+                                Toast.makeText(this, "White Won!!", Toast.LENGTH_LONG).show()
                             else
-                                Toast.makeText(this,"Match Tied!!",Toast.LENGTH_LONG).show()
+                                Toast.makeText(this, "Match Tied!!", Toast.LENGTH_LONG).show()
                         }
                     }
                 }
 
+
             }
-        }
-        buttonreset.setOnClickListener {
-            count=1
-            countblack=2
-            countwhite=2
-            tvwhite.text=tvwhite.text.substring(0,tvwhite.text.length-2)+"0"+countwhite
-            tvblack.text=tvblack.text.substring(0,tvblack.text.length-2)+"0"+countblack
+            buttonreset.setOnClickListener {
+                count = 1
+                countblack = 2
+                countwhite = 2
+                tvwhite.text = tvwhite.text.substring(0, tvwhite.text.length - 2) + "0" + countwhite
+                tvblack.text = tvblack.text.substring(0, tvblack.text.length - 2) + "0" + countblack
 
 
-            for (i in 0..7) {
-                for (j in 0..7) {
-                    buttonArray[i][j].text=""
-                    // Initiailising the starting 4 buttons
-                    buttonArray[3][3].text="⚪"
-                    buttonArray[3][4].text="⚫"
-                    buttonArray[4][4].text="⚪"
-                    buttonArray[4][3].text="⚫"
+                for (i in 0..7) {
+                    for (j in 0..7) {
+                        buttonArray[i][j].text = ""
+                        // Initiailising the starting 4 buttons
+                        buttonArray[3][3].text = "⚪"
+                        buttonArray[3][4].text = "⚫"
+                        buttonArray[4][4].text = "⚪"
+                        buttonArray[4][3].text = "⚫"
 
+                    }
                 }
             }
-        }
 
+        }
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         super.onCreateOptionsMenu(menu)
